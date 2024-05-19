@@ -1,0 +1,15 @@
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.botao {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100px;
+    cursor: pointer;    
+    color: white;
+    border: none;
+}
