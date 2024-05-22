@@ -1,29 +1,17 @@
-import firebase_app from "./config";
+import { auth } from "./config";
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-const auth = getAuth(firebase_app);
+export async function signUp(email, password) {
+    await createUserWithEmailAndPassword(auth, email, password)
+        .then(() => alert("sucesso no cadastro Auth"))
+        .catch((error) => alert(error.message)
+        )
 
-
-export default async function signUp(email, password) {
-    let result = null,
-        error = null;
-    try {
-        result = await createUserWithEmailAndPassword(auth, email, password);
-    } catch (e) {
-        error = e;
-    }
-
-    return { result, error };
 }
 
-export default async function signIn(email, password) {
-    let result = null,
-        error = null;
-    try {
-        result = await signInWithEmailAndPassword(auth, email, password)
-    } catch (e) {
-        error = e;
-    }
-
-    return { result, error };
+export async function signIn(email, password) {
+    await signInWithEmailAndPassword(auth, email, password)
+        .then(() => //console.log("está logado")
+            alert("está logado"))
+        .catch((error) => alert(error.message))
 }
